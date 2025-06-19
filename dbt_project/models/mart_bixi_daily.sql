@@ -1,0 +1,1 @@
+-- Create a daily summary model from stg_bixi_trips

@@ -1,0 +1,25 @@
+
+version: 2
+
+sources:
+  - name: raw
+    schema: main
+    tables:
+      - name: bixi_trips
+      - name: bixi_stations
+      - name: montreal_weather
+
+models:
+  - name: mart_bixi_daily
+    description: "Mart model aggregating daily BIXI usage"
+    columns:
+      - name: day
+        tests:
+          - unique
+          - not_null
+          
+  - name: stg_bixi_trips
+    description: Staging for bixi trip data
+    columns:
+      - name: start_time
+        description: Start of the trip

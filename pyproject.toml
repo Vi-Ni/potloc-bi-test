@@ -1,0 +1,16 @@
+
+[tool.poetry]
+name = "potloc-bi-test"
+version = "0.1.0"
+description = "BI Developer Test for Potloc"
+authors = ["Vincent <vincent.nicolas@potloc.com>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.8"
+duckdb = "*"
+dbt-duckdb = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
