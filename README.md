@@ -77,7 +77,14 @@ potloc-bi-test/
    ```
 
    This will create a local database (`potloc.db`) with tables from the CSVs.
-4. **Run dbt commands**
+4. **Show the header of each imported tables**
+
+   Run the script:
+
+   ```bash
+   poetry run python code/show_table_headers.py
+   ```
+5. **Run dbt commands**
    Inside the dbt_project directory:
 
    ```bash
@@ -93,7 +100,6 @@ potloc-bi-test/
 ```sql
 COPY (SELECT * FROM mart_bixi_daily) TO 'final_output.csv' (HEADER, DELIMITER ',');
 ```
-
 
 ### ⚠️ If dbt Does Not Work
 
@@ -111,22 +117,11 @@ If you're unable to run dbt for technical reasons:
 
    - Google Sheets (recommended)
    - Or Google BigQuery (if you have access)
-3. Build a dashboard in Looker Studio:
-
-   - At least 3 charts (bar, line, map, etc.)
-   - Text boxes explaining logic/calculations
-   - Date filters and drilldown
-   - Use `start_time` or `end_time` consistently across charts
-   - Clean formatting, no pie charts :)
+2. Build a dashboard in Looker Studio
 
 ---
 
 ## 🧰 Analysis Prompts (Inspiration)
-
-- Are there fewer BIXI trips on cold/snowy days?
-- Do major events (F1, Piknic, Osheaga) affect usage?
-- What are the peak hours or weekdays?
-- How do stations compare by usage or duration?
 
 ---
 
@@ -138,6 +133,6 @@ When you’re ready, please:
 - Share the GitHub link and the Looker Studio dashboard link via email
 - (Optional) Include any slides or notes you used
 
-During your technical interview, you'll walk us through your work (~15 minutes).
+During your technical interview, you'll walk us through your work (~30 minutes).
 
 Good luck and have fun — we’re excited to see your approach!
