@@ -5,9 +5,10 @@ WITH base AS (
 )
 
 SELECT
-    STARTTIMEMS AS start_time,
-    ENDTIMEMS AS end_time,
-    (end_time-start_time)/1000 as duration_sec,
-    START_STATION_ID AS start_station_id,
-    END_STATION_ID AS end_station_id,
+    start_date,
+    start_station_code,
+    end_date,
+    end_station_code,
+    duration_sec,
+    is_member
 FROM base

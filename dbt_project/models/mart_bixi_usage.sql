@@ -1,0 +1,2 @@
+-- Create a mart with whatever Bixi data you see fit !
+-- Follow SQL best practices.
