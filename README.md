@@ -24,27 +24,6 @@ We expect this test to take approximately **3 hours**. Please do not over-optimi
 
 ---
 
-## 📂 Repository Structure
-
-```
-potloc-bi-test/
-├── data/
-│   ├── bixi_trips.csv
-│   ├── stations.csv
-│   └── weather.csv
-├── dbt_project/
-│   ├── dbt_project.yml
-│   ├── models/
-│   │   ├── stg_bixi_trips.sql     # Partially prefilled
-│   │   └── mart_bixi_daily.sql    # Empty
-│   └── schema.yml                 # Template provided
-├── import_data.sql                # Load data into DuckDB
-├── pyproject.toml                 # Poetry config file
-├── README.md                      # This file
-```
-
----
-
 ## 🔧 Setup Instructions (Windows/macOS)
 
 ### 🌐 System Prerequisites
@@ -60,16 +39,23 @@ potloc-bi-test/
    - Visit the GitHub repo link
    - Click **"Fork"** in the top-right corner
    - Clone it locally:
+
      ```bash
      git clone https://github.com/your-username/potloc-bi-test.git
      cd potloc-bi-test
      ```
+
 2. **Install dependencies using Poetry**
 
    ```bash
    poetry install
    ```
-3. **Load data into DuckDB**
+
+3. **Download raw Bixi data for 2020**
+   - Go to [Bixi Open Data](https://bixi.com/en/open-data) and download the CSV files for the year 2020.
+   - Place the downloaded CSV files without renaming in the `data` folder at the root of this repository.
+
+4. **Load data into DuckDB**
    Run the import script:
 
    ```bash
@@ -77,14 +63,15 @@ potloc-bi-test/
    ```
 
    This will create a local database (`potloc.db`) with tables from the CSVs.
-4. **Show the header of each imported tables**
+5. **Show the header of each imported tables**
 
    Run the script:
 
    ```bash
    poetry run python code/show_table_headers.py
    ```
-5. **Run dbt commands**
+
+6. **Run dbt commands**
    Inside the dbt_project directory:
 
    ```bash
@@ -95,10 +82,16 @@ potloc-bi-test/
    poetry run dbt docs generate && dbt docs serve --profiles-dir .dbt
    ```
 
-### Export your final model (`mart_bixi_daily`) from DuckDB:
+### Export your final model (`mart_bixi_usage`) from DuckDB
 
-```sql
-COPY (SELECT * FROM mart_bixi_daily) TO 'final_output.csv' (HEADER, DELIMITER ',');
+**Prerequisite**: Ensure you have the DuckDB CLI installed and available in your PATH. If not, install it via:
+
+- macOS (Homebrew): `brew install duckdb-cli`
+- pip: `pip install duckdb`
+
+```bash
+duckdb ../potloc.db \
+  -c "COPY (SELECT * FROM main.mart_bixi_usage) TO '../mart_bixi_usage.csv' (HEADER, DELIMITER ',');"
 ```
 
 ### ⚠️ If dbt Does Not Work

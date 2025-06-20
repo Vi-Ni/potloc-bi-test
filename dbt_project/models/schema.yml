@@ -1,4 +1,3 @@
-
 version: 2
 
 sources:
@@ -7,19 +6,35 @@ sources:
     tables:
       - name: bixi_trips
       - name: bixi_stations
-      - name: montreal_weather
 
 models:
-  - name: mart_bixi_daily
-    description: "Mart model aggregating daily BIXI usage"
-    columns:
-      - name: day
-        tests:
-          - unique
-          - not_null
-          
+  - name: mart_bixi_usage
+# Add your table and columns description here !
+
   - name: stg_bixi_trips
     description: Staging for bixi trip data
     columns:
-      - name: start_time
+      - name: start_date
         description: Start of the trip
+      - name: end_date
+        description: End of the trip
+      - name: duration_sec
+        description: Duration of the trip in seconds
+      - name: start_station_code
+        description: Code of the start station
+      - name: end_station_code
+        description: Code of the end station
+      - name: is_member
+        description: Indicates if the user is a member or not
+
+  - name: stg_bixi_stations
+    description: Staging for bixi station data
+    columns:
+      - name: code
+        description: Unique code for the station
+      - name: name
+        description: Name of the station
+      - name: latitude
+        description: Latitude of the station location
+      - name: longitude
+        description: Longitude of the station location
