@@ -1,0 +1,9 @@
+.DS_Store
+poetry.lock
+potloc.db
+dbt.log
+dbt_project/target/
+data/*.csv
+export/.csv
+.user.yml
+.DS_Store
