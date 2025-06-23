@@ -57,7 +57,7 @@ We expect this test to take approximately **2-3 hours**. Please do not over-opti
    - Go to [Bixi Open Data](https://bixi.com/en/open-data) and download the CSV files for the year 2020.
       - Feel free to use other years in addition to 2020,
       but note that the data format may change, which may complexify the loading and transformations later on.
-   - Place the downloaded CSV files without renaming in the `data` folder at the root of this repository.
+   - Place the downloaded CSV files without renaming in the `data` folder at the root of this repository (which you'll have to create).
 
 4. **Load data into DuckDB**
    Run the import script:
