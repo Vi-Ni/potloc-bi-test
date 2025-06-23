@@ -3,7 +3,10 @@
 name = "potloc-bi-test"
 version = "0.1.0"
 description = "BI Developer Test for Potloc"
-authors = ["Vincent <vincent.nicolas@potloc.com>"]
+authors = [
+    "Vincent <vincent.nicolas@potloc.com>",
+    "Charles <charles.cossebrissac@potloc.com>"
+    ]
 package-mode = false
 
 [tool.poetry.dependencies]
